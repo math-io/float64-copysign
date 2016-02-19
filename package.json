@@ -1,0 +1,85 @@
+{
+  "name": "math-float64-copysign",
+  "version": "0.0.0",
+  "description": "Returns a double-precision floating-point number with the magnitude of x and the sign of y.",
+  "author": {
+    "name": "Athan Reines",
+    "email": "kgryte@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Athan Reines",
+      "email": "kgryte@gmail.com"
+    }
+  ],
+  "scripts": {
+    "test": "if [ \"${TRAVIS}\" ]; then npm run test-ci; else npm run test-local; fi",
+    "test-local": "tape \"./test/*.js\" | tap-spec",
+    "test-ci": "npm run test-local && xvfb-run npm run test-browsers",
+    "test-cov": "istanbul cover --dir ./reports/coverage --report lcov tape -- \"./test/*.js\"",
+    "test-browsers": "browserify ./test/*.js | testling | tap-spec",
+    "coverage": "istanbul cover --dir ./reports/codecov/coverage --report lcovonly tape -- \"./test/*.js\" && cat ./reports/codecov/coverage/lcov.info | codecov && rm -rf ./reports/codecov"
+  },
+  "main": "./lib",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/math-io/float64-copysign.git"
+  },
+  "keywords": [
+    "math-io",
+    "math.io",
+    "math",
+    "mathematics",
+    "float64",
+    "double",
+    "copysign",
+    "copy",
+    "sign",
+    "bits",
+    "compute-io",
+    "compute.io",
+    "computation",
+    "compute",
+    "number",
+    "dbl"
+  ],
+  "bugs": {
+    "url": "https://github.com/math-io/float64-copysign/issues"
+  },
+  "dependencies": {
+    "math-float64-from-words": "^1.0.0",
+    "math-float64-get-high-word": "^1.0.0",
+    "math-float64-to-words": "^1.0.0"
+  },
+  "devDependencies": {
+    "browserify": "13.x.x",
+    "codecov": "1.x.x",
+    "const-ninf-float64": "^1.0.0",
+    "const-pinf-float64": "^1.0.0",
+    "istanbul": "^0.4.1",
+    "jshint": "2.x.x",
+    "jshint-stylish": "2.x.x",
+    "tap-spec": "4.x.x",
+    "tape": "4.x.x",
+    "testling": "1.x.x"
+  },
+  "testling": {
+    "files": [
+      "test/*.js"
+    ],
+    "browsers": [
+      "iexplore/6.0..latest",
+      "firefox/3.0..latest",
+      "firefox/nightly",
+      "chrome/4.0..latest",
+      "chrome/canary",
+      "opera/10.0..latest",
+      "opera/next",
+      "safari/4.0..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  },
+  "license": "MIT"
+}
